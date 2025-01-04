@@ -1,0 +1,36 @@
+body {
+  font-family: sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.username {
+  font-weight: bold;
+}
+
+#task {
+  line-height: 1.6;
+  font-size: 16px;
+}
+#todos {
+  margin-block: 20px;
+}
+
+.todo-item {
+  border-bottom: 1px solid #ddd;
+  padding-block: 0 10px;
+  margin-block: 0 10px;
+}
+.add-button {
+  font-size: 16px;
+  line-height: 1.6;
+  cursor: pointer;
+}
+
+.checkbox,
+.delete-button {
+  cursor: pointer;
+}
