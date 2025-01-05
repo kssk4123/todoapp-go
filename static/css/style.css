@@ -34,3 +34,11 @@ header {
 .delete-button {
   cursor: pointer;
 }
+
+#delete-user {
+    border: 0;
+    background: 0;
+    text-decoration: underline;
+    color: red;
+    cursor: pointer;
+}

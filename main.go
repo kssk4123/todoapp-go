@@ -35,6 +35,6 @@ func main() {
 	r.POST("/api/todos", controllers.AddTodo)
         r.DELETE("/api/todos/:id", controllers.DeleteTodo)
         r.PUT("/api/todos/:id", controllers.UpdateTodoCompletion)
-
+        r.DELETE("/api/delete-user", controllers.DeleteUser)
 	r.Run(":8080")
 }

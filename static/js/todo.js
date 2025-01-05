@@ -139,6 +139,36 @@ document.getElementById('todos').addEventListener('change', (event) => {
     }
 });
 
+document.getElementById('delete-user').addEventListener('click', (event) => {
+  if (confirm("本当にこのユーザーを削除しますか？")) {
+    // ユーザーが「OK」を押した場合にAPIリクエストを送信
+
+    fetch("/api/delete-user", {
+      method: "DELETE",  // 削除リクエスト
+      headers: {
+        "Content-Type": "application/json",
+      },
+      // 必要ならばリクエストボディに追加データを送ることも可能
+      // body: JSON.stringify({ user_id: 123 }) など
+    })
+      .then(response => {
+        if (response.ok) {
+          // 削除成功した場合、ユーザーに通知してログインページにリダイレクト
+          alert("ユーザーは削除されました。ログイン画面にリダイレクトします。");
+          window.location.href = "/login"; // ログインページにリダイレクト
+        } else {
+          // 削除に失敗した場合
+          alert("ユーザー削除に失敗しました。");
+        }
+      })
+      .catch(error => {
+        // ネットワークエラーなどが発生した場合
+        console.error("Error deleting user:", error);
+        alert("ユーザー削除中にエラーが発生しました。");
+      });
+  }
+});
+
 // ページの読み込み後に呼び出す関数
 window.onload = function() {
     fetchTodos();

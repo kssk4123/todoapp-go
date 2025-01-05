@@ -10,9 +10,11 @@ document.getElementById("login-form").addEventListener("submit", async function(
     body: JSON.stringify({ username, password }),
   });
 
-  await response.json();
-  //const result = await response.json();
-  //alert(result.message);
+  //await response.json();
+  const result = await response.json();
+  if (!result.message) {
+    alert("ユーザー名かパスワードが正しくありません");
+  }
 
   if (response.ok) {
     window.location.href = "/home";  // メッセージ後に/homeへリダイレクト
