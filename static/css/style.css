@@ -44,7 +44,28 @@ button,
   cursor: pointer;
 }
 
+form {
+  width: fit-content;
+}
+
+.form-item {
+  margin-block: 0 10px;
+}
+
 .label {
-  display: inline-block;
-  width: 84px;
+  display: block;
+}
+
+#username,
+#password {
+  display: block;
+}
+
+.auth-button {
+  width: 100%;
+  background-color: #4169e1;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.6;
 }
