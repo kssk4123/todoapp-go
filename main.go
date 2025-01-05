@@ -16,13 +16,14 @@ func main() {
         r := gin.Default()
         r.Static("/css", "./static/css")
         r.Static("/js", "./static/js")
+        r.Static("/icon", "./static/icon")
 
         store := cookie.NewStore([]byte("secret"))
         store.Options(sessions.Options{
                 Path:     "/",
                 MaxAge:   3600, // セッションの有効期限
                 HttpOnly: true, // JavaScriptからクッキーをアクセス不可にする
-                Secure:   true, // HTTPS経由でのみ送信（開発時は false に設定可能）
+                Secure:   true, // HTTPS経由でのみ送信
         })
         r.Use(sessions.Sessions("session", store))
 
@@ -42,5 +43,6 @@ func main() {
         r.DELETE("/api/todos/:id", controllers.DeleteTodo)
         r.PUT("/api/todos/:id", controllers.UpdateTodoCompletion)
         r.DELETE("/api/delete-user", controllers.DeleteUser)
+
         r.Run(":8080")
 }
