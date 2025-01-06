@@ -12,6 +12,7 @@ NEW_BINARY="$BUILD_DIR/$APP_NAME-$(date +%Y%m%d%H%M%S)"
 
 # 最新コード取得
 cd "$SRC_DIR"
+git fetch --prune
 git pull origin main
 
 # ビルド
