@@ -17,7 +17,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "$AWS_ACCESS_KEY_ID" > ~/.ssh/id_github
           chmod 600 ~/.ssh/id_github
-          ssh-keyscan -H <EC2_IP> >> ~/.ssh/known_hosts
+          ssh-keyscan -H 35.78.20.87 >> ~/.ssh/known_hosts
 
       - name: Deploy to EC2
         env:
