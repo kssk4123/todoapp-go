@@ -16,13 +16,13 @@ git fetch --prune
 git pull origin main
 
 # ビルド
-go build -o "$NEW_BINARY" .
+go build -o "$APP_NAME" .
 
-# シンボリックリンク更新
-ln -sf "$NEW_BINARY" "$BUILD_DIR/$APP_NAME"
-
-# 古いバイナリを削除 (最新の N 個以外)
-ls -1t "$BUILD_DIR/$APP_NAME-"* | tail -n +$((MAX_BACKUPS + 1)) | xargs -r rm -f
+# # シンボリックリンク更新
+# ln -sf "$NEW_BINARY" "$BUILD_DIR/$APP_NAME"
+#
+# # 古いバイナリを削除 (最新の N 個以外)
+# ls -1t "$BUILD_DIR/$APP_NAME-"* | tail -n +$((MAX_BACKUPS + 1)) | xargs -r rm -f
 
 # 古いログファイルを削除
 ls -1t "$LOG_DIR/app.log.*" | tail -n +$((MAX_LOGS + 1)) | xargs -r rm -f
