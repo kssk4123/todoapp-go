@@ -47,7 +47,7 @@ jobs:
           # ssh 接続して git pull
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key
           chmod 600 private_key
-          ssh -oStrictHostKeyChecking=no ${{ secrets.USER_NAME }}@{{ secrets.HOST_IP }} -i private_key "cd /opt/goapp/src && bash deploy.sh"
+          ssh -oStrictHostKeyChecking=no ${{ secrets.USER_NAME }}@${{ secrets.HOST_IP }} -i private_key "cd /opt/goapp/src && bash deploy.sh"
 
           # security group 閉じる
           aws ec2 revoke-security-group-ingress --group-id ${{ secrets.EC2_SECURITY_GROUP_ID }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
