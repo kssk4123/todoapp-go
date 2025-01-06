@@ -40,7 +40,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
           # security group 開放
-          aws ec2 authorize-security-group-ingress --group-id ${{ secrets.EC2_SECURITY_GROUP_ID }} --port 22 --cider ${{ steps.ip.outputs.ipv4 }}/32
+          aws ec2 authorize-security-group-ingress --group-id ${{ secrets.EC2_SECURITY_GROUP_ID }} --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
 
           # ssh 接続して git pull
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key
