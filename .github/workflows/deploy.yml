@@ -23,7 +23,7 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.AWS_ACCESS_KEY_ID }}
         run: |
-          ssh -i ~/.ssh/id_github ubuntu << EOF
+          ssh -i ~/.ssh/id_github ubuntu@35.78.20.87 << EOF
             cd /opt/goapp/src
             bash deploy.sh
           EOF
