@@ -12,18 +12,18 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      # - name: Set up SSH key
-      #   run: |
-      #     mkdir -p ~/.ssh
-      #     echo "$AWS_ACCESS_KEY_ID" > ~/.ssh/id_github
-      #     chmod 600 ~/.ssh/id_github
-      #     ssh-keyscan -H 35.78.20.87 >> ~/.ssh/known_hosts
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_github
+          chmod 600 ~/.ssh/github_deploy_key
+          ssh-keyscan -H 35.78.20.87 >> ~/.ssh/known_hosts
 
       - name: Deploy to EC2
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
-          ssh -i ~/.ssh/id_github ubuntu@35.78.20.87 << EOF
+          ssh -i ~/.ssh/github_deploy_key ubuntu@35.78.20.87 << EOF
             cd /opt/goapp/src
             bash deploy.sh
           EOF
