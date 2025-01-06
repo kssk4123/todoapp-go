@@ -11,13 +11,13 @@ jobs:
 
     steps:
       - name: Checkout code
-      - uses: actions/checkout@v4
+        uses: actions/checkout@v4
 
       - name: Deploy to EC2
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
-          ssh -i ~/.ssh/github_deploy ubuntu << EOF
+          ssh -i ~/.ssh/id_github ubuntu << EOF
             cd /opt/goapp/src
             bash deploy.sh
           EOF
